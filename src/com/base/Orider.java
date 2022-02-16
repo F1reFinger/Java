@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public class Orider{
 
     private final String code;
-    private final BigDecimal totalValue;
+    private final double totalValue;
 
     /**
      * construtor da classe 
@@ -37,11 +37,11 @@ public class Orider{
      * @throws RuntimeException lança excessão caso o valor seja menor que 100  
      */
     public double calculateFee (){
-        if(this.totalValue.signum() < 0){
+        if(this.totalValue < 0){
             throw new RuntimeException("O pedido não pode ter valor negativo");
         }
-        if(this.totalValuecompareTo(new BigDecimal("00.00") > 100 )){
-            return this.totalValue.multiply(new BigDecimal("00.00"));
+        if(this.totalValue > 100.00 ){
+            return this.totalValue * (new Double("00.00"));
         }
         return this.totalValue;
     }
